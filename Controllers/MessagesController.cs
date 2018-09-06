@@ -8,9 +8,15 @@ using Microsoft.Bot.Connector;
 
 namespace SimpleBot
 {
+    //teste
     [BotAuthentication]
     public class MessagesController : ApiController
     {
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         [ResponseType(typeof(void))]
         public virtual async Task<HttpResponseMessage> Post([FromBody] Activity activity)
         {
@@ -23,7 +29,11 @@ namespace SimpleBot
             return new HttpResponseMessage(HttpStatusCode.Accepted);
         }
 
-        // Estabelece comunicação entre o usuário e o SimpleBotUser
+        /// <summary>
+        /// Estabelece comunicação entre o usuário e o SimpleBotUser
+        /// </summary>
+        /// <param name="activity"></param>
+        /// <returns></returns>
         async Task HandleActivityAsync(Activity activity)
         {
             string text = activity.Text;
@@ -37,7 +47,12 @@ namespace SimpleBot
             await ReplyUserAsync(activity, response);
         }
 
-        // Responde mensagens usando o Bot Framework Connector
+        /// <summary>
+        /// Responde mensagens usando o Bot Framework Connector 
+        /// </summary>
+        /// <param name="message"></param>
+        /// <param name="text"></param>
+        /// <returns></returns>
         async Task ReplyUserAsync(Activity message, string text)
         {
             var connector = new ConnectorClient(new Uri(message.ServiceUrl));
