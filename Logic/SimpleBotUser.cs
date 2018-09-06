@@ -46,7 +46,7 @@ namespace SimpleBot
 
             var filtro = Builders<UserProfile>.Filter.Eq("id", id);
 
-            return col.Find(filtro).First() ?? new UserProfile { Id = id , Visitas = 0 };
+            return col.Find(filtro).FirstOrDefault() ?? new UserProfile { Id = id , Visitas = 0 };
         }
 
         public static void SetProfile(string id, UserProfile profile)
